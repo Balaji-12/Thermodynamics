@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+R = 8.314  # Gas constant (J/(mol*K))
+
+# Generate data
+T = np.linspace(100, 500, 20)  # Temperature (K)
+V = np.linspace(1, 10, 20)      # Volume (L)
+T, V = np.meshgrid(T, V)
+n = 1                           # Number of moles (arbitrary)
+P = (n * R * T) / V             # Pressure (Pa)
+
+# Create 3D plot
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_surface(T, V, P, cmap='viridis')
+
+# Add labels and title
+ax.set_xlabel('Temperature (K)')
+ax.set_ylabel('Volume (L)')
+ax.set_zlabel('Pressure (Pa)')
+ax.set_title('Ideal Gas Law Visualization')
+
+plt.show()
